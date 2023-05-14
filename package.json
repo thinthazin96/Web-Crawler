@@ -1,0 +1,23 @@
+{
+  "name": "web-crawler",
+  "version": "1.0.0",
+  "description": "Set up Installed nvm",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinthazin96/Web-Crawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thinthazin96/Web-Crawler/issues"
+  },
+  "homepage": "https://github.com/thinthazin96/Web-Crawler#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
