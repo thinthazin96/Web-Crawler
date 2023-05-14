@@ -8,3 +8,4 @@ Set up
 6. Create .gitignore file in the root project
     i. ignore node_modules
 7. Install jest module
+8. Create crawl.test.js to test functions
