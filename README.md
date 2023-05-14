@@ -1,1 +1,2 @@
-# Web-Crawler
+Set up
+Installed nvm
