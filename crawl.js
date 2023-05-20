@@ -1,3 +1,5 @@
+const {JSDOM} = require('jsdom')
+
 //this function return normalized URL
 function normalizeURL(url) {
     const urlObj = new URL(url) //Parse URL string using the WHATWG API
@@ -11,6 +13,31 @@ function normalizeURL(url) {
 
 }
 
+//this function take a string of HTML and returns a list of all the link URLs
+function getURLsFromHTML(htmlBody, baseURL) {
+    const urls = []
+    const dom = new JSDOM(htmlBody)
+    const aElements = dom.window.document.querySelectorAll('a')
+    for(const aElement of aElements) {
+        if(aElement.href.slice(0,1) === '/'){
+            try {
+                urls.push(new URL(aElement.href, baseURL).href)
+            }catch(err){
+                console.log(`${err.message}: ${aElement.href}`)
+            }
+        } else{
+            try {
+                urls.push(new URL(aElement.href).href)
+            } catch(err){
+                console.log(`${err.message}: ${aElement.href}`)
+            }
+        }
+    }
+    return urls
+}
+
+
 module.exports = {
-    normalizeURL
+    normalizeURL,
+    getURLsFromHTML
 }
