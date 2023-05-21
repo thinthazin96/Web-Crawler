@@ -13,6 +13,27 @@ test('normalizeURL protocol', () => {
     expect(actual).toEqual(expected)
 })
 
+test('normalizeURL slash', () => {
+    const input = 'https://blog.boot.dev/path/'
+    const actual = normalizeURL(input)
+    const expected = 'blog.boot.dev/path'
+    expect(actual).toEqual(expected)
+})
+
+test('normalizeURL capitals', () => {
+    const input = 'https://BLOG.boot.dev/path'
+    const actual = normalizeURL(input)
+    const expected = 'blog.boot.dev/path'
+    expect(actual).toEqual(expected)
+})
+
+test('normalizeURL http', () => {
+    const input = 'http://blog.boot.dev/path'
+    const actual = normalizeURL(input)
+    const expected = 'blog.boot.dev/path'
+    expect(actual).toEqual(expected)
+})
+
 test('getURLsFromHTML absolute', () => {
     const inputBody = '<html><body><a href="https://blog.boot.dev"><span>Boot.dev></span></a></body></html>'
     const inputURL = 'https://blog.boot.dev'

@@ -5,12 +5,11 @@ function normalizeURL(url) {
     const urlObj = new URL(url) //Parse URL string using the WHATWG API
     let fullPath = `${urlObj.host}${urlObj.pathname}` //Store host and pathname
     
-    //Check if the URL is valid 
+    //Slash Case: Take off the '/' if it exists in URL
     if (fullPath.length > 0 && fullPath.slice(-1) === '/') {
         fullPath = fullPath.slice(0, -1)
     }
     return fullPath
-
 }
 
 //this function take a string of HTML and returns a list of all the link URLs
