@@ -43,6 +43,20 @@ async function crawlPage(currentURL){
     try {
         const resp = await fetch(currentURL)
 
+        //If the HTTP status code is an error level code, print an error and return
+        if(resp.status > 399){
+            console.log(`error in fetch with status code ${resp.status} on page: ${currentURL}`)
+            return 
+        }
+
+        //If the response content-type header isn't text/html print and error and return
+        const contentType = resp.headers.get("content-type")
+        //Edge case: if the response content-type header has text/html and others content-type, we want return the body
+        if(!contentType.includes("text/html")){
+            console.log(`non html response, content type: ${contentType}, on page: ${currentURL}`)
+            return 
+        }
+
         //resp.text() return as promise in text format
         console.log(await resp.text()) 
     } catch(err) {
