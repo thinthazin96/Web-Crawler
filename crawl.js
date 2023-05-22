@@ -35,8 +35,25 @@ function getURLsFromHTML(htmlBody, baseURL) {
     return urls
 }
 
+async function crawlPage(currentURL){
+
+    console.log(`actively crawling: ${currentURL}`)
+
+    //Handle error gracefully when there is a bad link in the website
+    try {
+        const resp = await fetch(currentURL)
+
+        //resp.text() return as promise in text format
+        console.log(await resp.text()) 
+    } catch(err) {
+        console.log(`error in fetch: ${err.message}m on page: ${currentURL}`)
+    }
+    
+}
+
 
 module.exports = {
     normalizeURL,
-    getURLsFromHTML
+    getURLsFromHTML,
+    crawlPage
 }
