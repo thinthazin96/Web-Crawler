@@ -15,3 +15,9 @@ Set up
 6. Install jest module
 7. Create crawl.test.js to test functions
 8. Installed JSDOM
+
+Run the program
+npm run [website]
+
+Run the test cases
+npm run test
